@@ -17,11 +17,18 @@ public class EditManage : MonoBehaviour
 
     public bool editorMode = false;
     //bool instantiated = false;
-
+    private void OnEnable()
+    {
+        inputAction.Enable();
+    }
+    private void OnDisable()
+    {
+        inputAction.Disable();
+    }
     // Start is called before the first frame update
     void Awake()
     {
-        inputAction = PlayerController.instance.inputAction;
+        inputAction = new PlayerAction();
 
         inputAction.Editor.EnableEdit.performed += cntxt => SwitchCamera();
 
