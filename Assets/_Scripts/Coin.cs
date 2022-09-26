@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    public int rotateSpeed;
     private void OnCollisionEnter(Collision other)
     {
       if(other.collider.tag == "Player")
@@ -12,5 +13,10 @@ public class Coin : MonoBehaviour
             Destroy(gameObject);
 
         }
+    }
+
+   void Update()
+    {
+        transform.Rotate(0, rotateSpeed, 0, Space.World);
     }
 }
