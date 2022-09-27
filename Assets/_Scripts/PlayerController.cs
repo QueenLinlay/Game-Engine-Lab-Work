@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
         inputAction.Player.Jump.performed += cntxt => Jump();
         inputAction.Player.Shoot.performed += cntxt => Shoot();
         inputAction.Player.Rotate.performed += cntxt => RotateCP();
+        inputAction.Player.Exit.performed += cntxt => Exit();
 
         rb = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
@@ -92,6 +93,11 @@ public class PlayerController : MonoBehaviour
     public void RotateCP()
     {
         Character.transform.Rotate(0.0f, -degrees, 0.0f, Space.World);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
     // Update is called once per frame
