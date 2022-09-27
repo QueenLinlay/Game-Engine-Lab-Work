@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Reload : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static Reload instance;
+
+    void Awake()
     {
-        
+        if (!instance)
+        {
+            instance = this;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision other)
     {
-        
+        if (other.collider.tag == "Player")
+        {
+            Reload.instance.LoadThing();
+
+        }
+    }
+    void LoadThing()
+    {
+        SceneManager.LoadScene(0);
     }
 }
