@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     Vector2 move;
     Vector2 rotate;
     private float walkSpeed = 5f;
+    private float degrees = 90.0f;
     // public Camera playerCamera;
     //Vector3 cameraRotation;
 
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     //Projectile Bullets
     public GameObject bullet;
     public Transform projectilePos;
+    public GameObject Character;
 
     private void OnEnable()
     {
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
 
         inputAction.Player.Jump.performed += cntxt => Jump();
         inputAction.Player.Shoot.performed += cntxt => Shoot();
+        inputAction.Player.Rotate.performed += cntxt => RotateCP();
 
         rb = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
@@ -70,6 +73,11 @@ public class PlayerController : MonoBehaviour
         Rigidbody bulletRb = Instantiate(bullet, projectilePos.position, Quaternion.identity).GetComponent<Rigidbody>();
         bulletRb.AddForce(transform.forward * 32f, ForceMode.Impulse);
         bulletRb.AddForce(transform.up * 5f, ForceMode.Impulse);
+    }
+
+    public void RotateCP()
+    {
+        Character.transform.Rotate(0.0f, -degrees, 0.0f, Space.World);
     }
 
     // Update is called once per frame

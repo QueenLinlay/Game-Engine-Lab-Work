@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    public int rotateSpeed;
+    public float rotateSpeed;
     private void OnCollisionEnter(Collision other)
     {
       if(other.collider.tag == "Player")
