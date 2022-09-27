@@ -47,7 +47,10 @@ public class PlayerController : MonoBehaviour
         inputAction = new PlayerAction();
 
         inputAction.Player.Move.performed += cntxt => move = cntxt.ReadValue<Vector2>();
+        inputAction.Player.Move.performed += cntxt => IsAction();
+
         inputAction.Player.Move.canceled += cntxt => move = Vector2.zero;
+        inputAction.Player.Move.canceled += cntxt => IsNoAction();
 
         inputAction.Player.Jump.performed += cntxt => Jump();
         inputAction.Player.Shoot.performed += cntxt => Shoot();
@@ -57,6 +60,16 @@ public class PlayerController : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         distanceToGround = GetComponent<Collider>().bounds.extents.y;
 
+    }
+
+    private void IsAction()
+    {
+        playerAnimator.SetBool("Walking", true);
+    }
+
+    private void IsNoAction()
+    {
+        playerAnimator.SetBool("Walking", false);
     }
 
     private void Jump()
