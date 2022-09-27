@@ -1,6 +1,6 @@
 # Game-Engine-Lab-Work
-Student Name: Justin Lee
-Student Number: 100658626
+* Student Name: Justin Lee
+* Student Number: 100658626
 
 # Explain Assignment 1
 The build folder known as GameTestSoftware, where you can run
