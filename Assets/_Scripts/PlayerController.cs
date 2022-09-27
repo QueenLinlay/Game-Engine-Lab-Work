@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -100,5 +101,10 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.right * move.x * Time.deltaTime * walkSpeed, Space.Self);
 
         isGrounded = Physics.Raycast(transform.position, -Vector3.up, distanceToGround);
+
+        if(Character.transform.position.y < -2)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
