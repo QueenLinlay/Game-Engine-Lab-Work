@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using System;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 
 {
     public static ScoreManager instance;
-    public GameObject ChangingText;
+    public TMP_Text ChangingText;
     int score = 0;
     // Start is called before the first frame update
     void Awake()
@@ -26,6 +27,6 @@ public class ScoreManager : MonoBehaviour
 
     public void Update()
     {
-        ChangingText.GetComponent<Text>().text = score.ToString();
+        ChangingText.text = score.ToString();
     }
 }
